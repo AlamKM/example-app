@@ -51,7 +51,6 @@ class PatientResource extends Resource
                         ->maxLength(255),
                     Forms\Components\TextInput::make('phone')
                         ->label('Phone number')
-                        ->tel()
                         ->required(),
                 ])
                 ->required(),

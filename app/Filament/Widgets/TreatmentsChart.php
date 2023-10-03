@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Filament\Resources\WidgetResource\Widgets;
+namespace App\Filament\Widgets;
 
 use Filament\Widgets\ChartWidget;
 use App\Models\Treatment;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
+ 
 
 class TreatmentsChart extends ChartWidget
 {
@@ -13,8 +14,7 @@ class TreatmentsChart extends ChartWidget
 
     protected function getData(): array
     {
-        return [
-            $data = Trend::model(Treatment::class)
+        $data = Trend::model(Treatment::class)
         ->between(
             start: now()->subYear(),
             end: now(),
@@ -31,11 +31,10 @@ class TreatmentsChart extends ChartWidget
         ],
         'labels' => $data->map(fn (TrendValue $value) => $value->date),
     ];
-        ];
     }
 
     protected function getType(): string
     {
-        return 'bar';
+        return 'line';
     }
 }
